@@ -16,4 +16,4 @@ There is none. Use it at your own risk. I hope it doesn't burn down your hose.
 
 ## support
 
-This is not a commercial supported project. If you're having issues, get in touch (e.g. [twitter](http://twitter.com/geoffreywiseman). If I have the time and inclination to help, I will. If I can't, it's simple bash scripting, and someone else probably can.
+This is not a commercial supported project. If you're having issues, get in touch (e.g. [twitter](http://twitter.com/geoffreywiseman)). If I have the time and inclination to help, I will. If I can't, it's simple bash scripting, and someone else probably can.
