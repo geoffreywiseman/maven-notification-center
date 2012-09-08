@@ -8,6 +8,9 @@
 # the directory in which it was run (in case there are multiple builds running concurrently). If you invoked this
 # script from either Terminal or iTerm2, clicking the notification should take you back to it.
 #
+# By using the 'project' as the group, any subsequent build notifications will replace the earlier ones for
+# the same project, reducing notification centre clutter.
+#
 
 # Run Maven
 function execute_maven {
@@ -27,7 +30,7 @@ function notify {
 		MESSAGE="Build failed in $PROJECT; click to return."
 	fi
 	activate_term_program
-	terminal-notifier -title "$TITLE" -subtitle "$SUBITLE" -message "$MESSAGE" $ACTIVATE
+	terminal-notifier -title "$TITLE" -subtitle "$SUBITLE" -message "$MESSAGE" -group $PROJECT $ACTIVATE
 }
 
 # Set the 'ACTIVATE' variable based on the terminal in which this is running
