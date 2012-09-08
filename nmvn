@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+# USAGE: nmvn <parameters and goals>
+# 
+# Invoke maven with the supplied parameters and goals.
+# 
+# When the build is complete, send a message to notification centre indicating if the build was successful, and
+# the directory in which it was run (in case there are multiple builds running concurrently). If you invoked this
+# script from either Terminal or iTerm2, clicking the notification should take you back to it.
+#
+
+# Run Maven
+function execute_maven {
+	mvn $*
+	MAVEN_RETURN=$?
+}
+
+# Send a Notification to Notification Centre
+function notify {
+	PROJECT=${PWD##*/}
+	SUBTITLE="in $PROJECT"
+	if [ $MAVEN_RETURN == 0 ]; then
+		TITLE="Build Successful"
+		MESSAGE="Build succeeded in $PROJECT; click to return."
+	else
+		TITLE="Build Failed"
+		MESSAGE="Build failed in $PROJECT; click to return."
+	fi
+	activate_term_program
+	terminal-notifier -title "$TITLE" -subtitle "$SUBITLE" -message "$MESSAGE" $ACTIVATE
+}
+
+# Set the 'ACTIVATE' variable based on the terminal in which this is running
+function activate_term_program {
+	if [ $TERM_PROGRAM = "Apple_Terminal" ]; then
+		ACTIVATE="-activate com.apple.Terminal"
+	elif [ $TERM_PROGRAM = "iTerm.app" ]; then
+		ACTIVATE="-activate com.googlecode.iterm2"
+	else
+		ACTIVATE=""
+	fi
+}
+
+# Print the header comment from this file, ducking the shebang line, and stopping a the first line that doesn't start with a hash
+function print_header_comment {
+        awk '/^# / { print substr( $0, 3 ) }; $0 !~ /^#/ { exit }' $0
+}
+
+# Print Usage or Execute
+if [ $# == 0 ]; then
+  print_header_comment
+else
+	execute_maven $*
+	notify
+fi
