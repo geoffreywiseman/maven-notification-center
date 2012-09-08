@@ -10,6 +10,10 @@ This project builds on [terminal-notifier](https://github.com/alloy/terminal-not
 
 This software is unlicensed. See [unlicense.org](http://unlicense.org).
 
-## warranty and support
+## warranty
 
-There is none. Use it at your own risk. If you're having issues, you can reach out to me [on twitter](http://twitter.com/geoffreywiseman). I'm not promising anything, but if I can help easily, I probably will.
+There is none. Use it at your own risk. I hope it doesn't burn down your hose.
+
+## support
+
+This is not a commercial supported project. If you're having issues, get in touch (e.g. [twitter](http://twitter.com/geoffreywiseman). If I have the time and inclination to help, I will. If I can't, it's simple bash scripting, and someone else probably can.
