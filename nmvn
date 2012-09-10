@@ -12,17 +12,11 @@
 # the same project, reducing notification centre clutter.
 #
 
-# Run Maven
-function execute_maven {
-	mvn $*
-	MAVEN_RETURN=$?
-}
-
 # Send a Notification to Notification Centre
 function notify {
 	PROJECT=${PWD##*/}
 	SUBTITLE="in $PROJECT"
-	if [ $MAVEN_RETURN == 0 ]; then
+	if [ $1 ]; then
 		TITLE="Build Successful"
 		MESSAGE="Build succeeded in $PROJECT; click to return."
 	else
@@ -53,6 +47,6 @@ function print_header_comment {
 if [ $# == 0 ]; then
   print_header_comment
 else
-	execute_maven $*
-	notify
+	mvn $*
+	notify $?
 fi
