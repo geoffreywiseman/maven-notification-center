@@ -1,6 +1,6 @@
 # maven-notification-center
 
-This is a tiny project intended to integrate *Maven* with *Notification Center* under *OS X 10.8: Mountain Lion* by generating build success and failure messages.
+This is a tiny project intended to integrate *Maven* with *Notification Center* under *OS X 10.8: Mountain Lion* by generating build success and failure messages. It is roughly the same as my [maven growl](http://geoffreywiseman.github.com/maven-growl/) project, which does the same thing using *Growl*. They each have minor unique features because Growl and Notification Center expose unique features.
 
 ## terminal-notifier
 
