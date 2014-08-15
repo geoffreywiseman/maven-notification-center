@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # USAGE: nmvn <parameters and goals>
-# 
+#
 # Invoke maven with the supplied parameters and goals.
-# 
+#
 # When the build is complete, send a message to notification centre indicating if the build was successful, and
 # the directory in which it was run (in case there are multiple builds running concurrently). If you invoked this
 # script from either Terminal or iTerm2, clicking the notification should take you back to it.
@@ -16,7 +16,7 @@
 function notify {
 	PROJECT=${PWD##*/}
 	SUBTITLE="in $PROJECT"
-	if [ $1 ]; then
+	if [ $1 -eq 0 ]; then
 		TITLE="Build Successful"
 		MESSAGE="Build succeeded in $PROJECT; click to return."
 	else
@@ -29,7 +29,9 @@ function notify {
 
 # Set the 'ACTIVATE' variable based on the terminal in which this is running
 function activate_term_program {
-	if [ $TERM_PROGRAM = "Apple_Terminal" ]; then
+	if [ -z "$TERM_PROGRAM" ]; then
+		ACTIVATE=""
+	elif [ $TERM_PROGRAM = "Apple_Terminal" ]; then
 		ACTIVATE="-activate com.apple.Terminal"
 	elif [ $TERM_PROGRAM = "iTerm.app" ]; then
 		ACTIVATE="-activate com.googlecode.iterm2"
